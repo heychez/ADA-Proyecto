@@ -136,21 +136,6 @@ public class RSA {
         } while (q.compareTo(p) == 0);
     }
 
-    public void generaClaves() {
-        // n = p * q
-        n = p.multiply(q);
-        // toltient = (p-1)*(q-1)
-        totient = p.subtract(BigInteger.valueOf(1));
-        totient = totient.multiply(q.subtract(BigInteger.valueOf(1)));
-        // Elegimos un e coprimo de y menor que n
-        do {
-            e = new BigInteger(2 * tamPrimo, new Random());
-        } while ((e.compareTo(totient) != -1)
-                || (e.gcd(totient).compareTo(BigInteger.valueOf(1)) != 0));
-        // d = e^1 mod totient
-        d = e.modInverse(totient);
-    }
-
     public BigInteger[] encriptar(String mensaje) {
         double t_ini = System.currentTimeMillis();
         int i;
@@ -191,23 +176,23 @@ public class RSA {
         return (new String(charArray));
     }
 
-    boolean miTestDePrimos(BigInteger n) {
-        switch (n.compareTo(BigInteger.ONE)) {
+    boolean miTestDePrimos(BigInteger m) {
+        switch (m.compareTo(BigInteger.ONE)) {
             case -1:
                 return false;
             case 0:
                 return false;
         }
-        BigInteger p = BigInteger.valueOf(2);
-        if (n.compareTo(p)==0) {
+        BigInteger w = BigInteger.valueOf(2);
+        if (m.compareTo(w)==0) {
             return true;
         }
 
-        if (n.mod(p).equals(BigInteger.ZERO)) {
+        if (m.mod(w).equals(BigInteger.ZERO)) {
             return false;
         }
-        for (p = BigInteger.valueOf(3); p.multiply(p).compareTo(n) == -1 || p.multiply(p).compareTo(n) == 0; p = p.add(BigInteger.ONE)) {
-            if ((n.mod(p)).compareTo(BigInteger.ZERO)==0) {
+        for (w = BigInteger.valueOf(3); w.multiply(w).compareTo(m) == -1 || w.multiply(w).compareTo(m) == 0; w = w.add(BigInteger.ONE)) {
+            if ((m.mod(w)).compareTo(BigInteger.ZERO)==0) {
                 return false;
             }
         }

@@ -83,7 +83,7 @@ public class MainWindow extends javax.swing.JFrame {
         txta_msjOriginal.setRows(5);
         jScrollPane1.setViewportView(txta_msjOriginal);
 
-        cbox_testsDePrimos.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Mi test de primos", "Fermat", "Miller-Rabin", "AKS", "Solovay-Strassen" }));
+        cbox_testsDePrimos.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Mi test", "Fermat", "Miller-Rabin", "Solovay-Strassen", "AKS" }));
         cbox_testsDePrimos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbox_testsDePrimosActionPerformed(evt);
@@ -178,9 +178,9 @@ public class MainWindow extends javax.swing.JFrame {
 
         jLabel9.setText("Algor. para la clave privada :");
 
-        cbox_tamPrimo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1024", "512", "256", "128" }));
+        cbox_tamPrimo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "32", "64", "128", "256", "512", "1024" }));
 
-        cbox_algosClavePriv.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "metodo modInverse( )", "Euclides extendido", "Fermat" }));
+        cbox_algosClavePriv.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "metodo modInverse( )", "Euclides extendido" }));
 
         btn_verDetalles.setText("Ver detalles");
         btn_verDetalles.addActionListener(new java.awt.event.ActionListener() {
